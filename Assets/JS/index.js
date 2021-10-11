@@ -25,6 +25,7 @@ const renderClock = function () {
 
 const renderHourBlocks = function () {
   // render hour blocks
+  $("p").append("Test");
 };
 
 const isPresent = function () {
