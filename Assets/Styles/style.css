@@ -20,7 +20,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   margin: 10px;
-  background-color: lightgrey;
+  background-color: lightgray;
   border-radius: 5px;
 }
 
@@ -47,7 +47,6 @@ textarea {
 
 .jumbotron {
   text-align: center;
-  background-color: var(--azure);
   color: black;
   border-radius: 0;
 }
