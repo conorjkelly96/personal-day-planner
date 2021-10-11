@@ -25,10 +25,32 @@ const renderClock = function () {
 
 const renderHourBlocks = function () {
   // render hour blocks
-  $("p").append("Test");
+  const userInput = $("<textarea/>").attr("id", "user-event");
+
+  const timeLabel = $("<label>", {
+    name: "user-event",
+    id: "user-event",
+    class: "time-of-day",
+  });
+
+  const saveBtn = $("<button/>", {
+    text: "Save Event",
+    id: "save-btn",
+    class: "saveBtn",
+  });
+
+  const eventContainer = $("<div>", {
+    class: "event-container",
+  });
+
+  eventContainer.append(timeLabel, userInput, saveBtn);
+  const container = $("#container");
+  container.append(eventContainer);
 };
 
 const isPresent = function () {
   // if present - set color to --mango
   //  if false - set color to --orange-pantone
 };
+
+onLoad();
