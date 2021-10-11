@@ -1,3 +1,10 @@
+const workingHours = [
+  {
+    Hour: "9am",
+    Event: $("#user-input"),
+  },
+];
+
 const onLoad = function () {
   // on record load, check local storage
   checkLocalStorage();
@@ -13,14 +20,21 @@ const onLoad = function () {
 };
 
 const checkLocalStorage = function () {
-  // function to check if anything is in local storage
-  // if so, return data
-  // if not, set default value
-  // save data function
+  const dataFromLS = localStorage.getItem("user-input");
+
+  if (!dataFromLS) {
+    console.log("no data");
+  } else {
+    console.log("data");
+  }
 };
 
 const renderClock = function () {
-  // function to render current day and time
+  function update() {
+    $("#clock").html(moment().format("D. MMMM YYYY H:mm:ss"));
+  }
+
+  setInterval(update, 1000);
 };
 
 const renderHourBlocks = function () {
