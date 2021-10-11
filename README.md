@@ -1,1 +1,1 @@
-# personal-day-planner
+# Personal Day Planner
