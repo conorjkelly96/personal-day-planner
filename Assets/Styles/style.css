@@ -15,11 +15,13 @@ body {
 }
 
 .event-container {
-  border: 1px black solid;
+  border: 0.5px lightgrey;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 10px;
+  background-color: lightgrey;
+  border-radius: 5px;
 }
 
 #time-label {
@@ -90,6 +92,8 @@ textarea {
   border-left: 1px solid black;
   background-color: #06aed5;
   color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .saveBtn i:hover {
