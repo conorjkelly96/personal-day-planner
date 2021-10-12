@@ -1,18 +1,18 @@
 const workingHours = [
   {
-    hour: "09:00am",
+    hour: "09:00",
     event: $("#user-input"),
   },
   {
-    hour: "10:00am",
+    hour: "10:00",
     event: $("#user-input"),
   },
   {
-    hour: "11:00am",
+    hour: "11:00",
     event: $("#user-input"),
   },
   {
-    hour: "12:00am",
+    hour: "12:00",
     event: $("#user-input"),
   },
   {
@@ -37,11 +37,7 @@ const workingHours = [
   },
 ];
 
-const hour = "9";
-const moHour = moment(hour).format("HH");
-console.log(moHour);
-
-let currentHourIndex = 0;
+const activitiesByHour = [];
 
 const onLoad = function () {
   // on record load, check local storage
@@ -58,15 +54,17 @@ const onLoad = function () {
 };
 
 const checkLocalStorage = function () {
-  const dataFromLS = localStorage.getItem("user-input");
+  const dataFromLS = localStorage.getItem("activitiesByHour");
   const activitiesByHour = [];
   if (!dataFromLS) {
     console.log("no data");
     localStorage.setItem("activitiesByHour", JSON.stringify(activitiesByHour));
-  } else {
-    console.log("data");
-    localStorage.getItem("activitiesByHour", JSON.parse(activitiesByHour));
   }
+  // do i need an else here if i'm just checking local storage? Leave the getting part to the save function?
+  // else {
+  //   console.log("data");
+  //   // localStorage.getItem("activitiesByHour", JSON.parse(activitiesByHour));
+  // }
 };
 
 const renderClock = function () {
@@ -78,9 +76,6 @@ const renderClock = function () {
 };
 
 const constructHourBlocks = function () {
-  const currentHour = workingHours[currentHourIndex];
-  console.log(currentHour);
-
   for (let i = 0; i < workingHours.length; i++) {
     const data = workingHours[i];
     const userInput = $("<textarea/>").attr("id", "user-event");
@@ -104,6 +99,18 @@ const constructHourBlocks = function () {
     const container = $("#container");
     container.append(eventContainer);
   }
+
+  const saveData = function () {
+    // // target the text area field
+    // const event = document.getElementById("user-event");
+    // const hour = sx;
+    // // const savingData = activitiesByHour.push(input);
+    // localStorage.setItem("activitiesByHour", JSON.stringify());
+  };
+
+  const onClick = document.getElementById("save-btn");
+  onClick.addEventListener("click", saveData);
+  console.log("click", onClick);
 };
 
 const isPresent = function () {
