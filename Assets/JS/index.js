@@ -101,15 +101,15 @@ const constructHourBlocks = function () {
   }
 
   const saveData = function () {
-    // // target the text area field
-    // const event = document.getElementById("user-event");
-    // const hour = sx;
-    // // const savingData = activitiesByHour.push(input);
-    // localStorage.setItem("activitiesByHour", JSON.stringify());
+    // target the text area field
+    const event = document.getElementById("user-event");
+    const hour = sx;
+    // const savingData = activitiesByHour.push(input);
+    localStorage.setItem("activitiesByHour", JSON.stringify());
   };
 
-  const onClick = document.getElementById("save-btn");
-  onClick.addEventListener("click", saveData);
+  const btn = document.getElementsByClassName("saveBtn");
+  btn.addEventListener("click", saveData);
   console.log("click", onClick);
 };
 
