@@ -1,9 +1,47 @@
 const workingHours = [
   {
-    Hour: "9am",
-    Event: $("#user-input"),
+    hour: "09:00am",
+    event: $("#user-input"),
+  },
+  {
+    hour: "10:00am",
+    event: $("#user-input"),
+  },
+  {
+    hour: "11:00am",
+    event: $("#user-input"),
+  },
+  {
+    hour: "12:00am",
+    event: $("#user-input"),
+  },
+  {
+    hour: "13:00",
+    event: $("#user-input"),
+  },
+  {
+    hour: "14:00",
+    event: $("#user-input"),
+  },
+  {
+    hour: "15:00",
+    event: $("#user-input"),
+  },
+  {
+    hour: "16:00",
+    event: $("#user-input"),
+  },
+  {
+    hour: "17:00",
+    event: $("#user-input"),
   },
 ];
+
+const hour = "9";
+const moHour = moment(hour).format("HH");
+console.log(moHour);
+
+let currentHourIndex = 0;
 
 const onLoad = function () {
   // on record load, check local storage
@@ -13,7 +51,7 @@ const onLoad = function () {
   renderClock();
 
   //Render Hour Block
-  renderHourBlocks();
+  constructHourBlocks();
 
   //set Present / Future color coordination
   isPresent();
@@ -21,45 +59,51 @@ const onLoad = function () {
 
 const checkLocalStorage = function () {
   const dataFromLS = localStorage.getItem("user-input");
-
+  const activitiesByHour = [];
   if (!dataFromLS) {
     console.log("no data");
+    localStorage.setItem("activitiesByHour", JSON.stringify(activitiesByHour));
   } else {
     console.log("data");
+    localStorage.getItem("activitiesByHour", JSON.parse(activitiesByHour));
   }
 };
 
 const renderClock = function () {
   function update() {
-    $("#clock").html(moment().format("D. MMMM YYYY H:mm:ss"));
+    $("#clock").html(moment().format("DD MMMM YYYY H:mm:ss"));
   }
 
   setInterval(update, 1000);
 };
 
-const renderHourBlocks = function () {
-  // render hour blocks
-  const userInput = $("<textarea/>").attr("id", "user-event");
+const constructHourBlocks = function () {
+  const currentHour = workingHours[currentHourIndex];
+  console.log(currentHour);
 
-  const timeLabel = $("<label>", {
-    name: "user-event",
-    id: "user-event",
-    class: "time-of-day",
-  });
+  for (let i = 0; i < workingHours.length; i++) {
+    const data = workingHours[i];
+    const userInput = $("<textarea/>").attr("id", "user-event");
+    const timeLabel = $("<label>", {
+      name: "time-label",
+      id: "time-label",
+      class: "time-of-day",
+    });
+    timeLabel.data("time");
+    timeLabel.text(data.hour);
 
-  const saveBtn = $("<button/>", {
-    text: "Save Event",
-    id: "save-btn",
-    class: "saveBtn",
-  });
-
-  const eventContainer = $("<div>", {
-    class: "event-container",
-  });
-
-  eventContainer.append(timeLabel, userInput, saveBtn);
-  const container = $("#container");
-  container.append(eventContainer);
+    const saveBtn = $("<button/>", {
+      text: "Save Event",
+      id: "save-btn",
+      class: "saveBtn",
+    });
+    const eventContainer = $("<div>", {
+      class: "event-container",
+    });
+    eventContainer.append(timeLabel, userInput, saveBtn);
+    const container = $("#container");
+    container.append(eventContainer);
+  }
 };
 
 const isPresent = function () {
