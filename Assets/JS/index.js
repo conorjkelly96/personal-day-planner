@@ -1,38 +1,55 @@
 const workingHours = [
   {
     hour: "09:00",
+    localStorageKey: "9",
     event: $("#user-input"),
   },
   {
     hour: "10:00",
+    localStorageKey: "10",
+
     event: $("#user-input"),
   },
   {
     hour: "11:00",
+    localStorageKey: "11",
+
     event: $("#user-input"),
   },
   {
     hour: "12:00",
+    localStorageKey: "12",
+
     event: $("#user-input"),
   },
   {
     hour: "13:00",
+    localStorageKey: "13",
+
     event: $("#user-input"),
   },
   {
     hour: "14:00",
+    localStorageKey: "14",
+
     event: $("#user-input"),
   },
   {
     hour: "15:00",
+    localStorageKey: "15",
+
     event: $("#user-input"),
   },
   {
     hour: "16:00",
+    localStorageKey: "16",
+
     event: $("#user-input"),
   },
   {
     hour: "17:00",
+    localStorageKey: "17",
+
     event: $("#user-input"),
   },
 ];
@@ -41,7 +58,7 @@ const activitiesByHour = [];
 
 const onLoad = function () {
   // on record load, check local storage
-  checkLocalStorage();
+  initializeLocalStorage();
 
   //Render Clock
   renderClock();
@@ -50,51 +67,47 @@ const onLoad = function () {
   constructHourBlocks();
 
   //set Present / Future color coordination
-  isPresent();
+  // isPresent();
 };
 
-const checkLocalStorage = function () {
+const initializeLocalStorage = function () {
   const dataFromLS = localStorage.getItem("activitiesByHour");
-  const activitiesByHour = [];
   if (!dataFromLS) {
-    console.log("no data");
-    localStorage.setItem("activitiesByHour", JSON.stringify(activitiesByHour));
+    localStorage.setItem("activitiesByHour", JSON.stringify({}));
   }
-  // do i need an else here if i'm just checking local storage? Leave the getting part to the save function?
-  // else {
-  //   console.log("data");
-  //   // localStorage.getItem("activitiesByHour", JSON.parse(activitiesByHour));
-  // }
 };
 
 const renderClock = function () {
   function update() {
     $("#clock").html(moment().format("DD MMMM YYYY H:mm:ss"));
   }
-
   setInterval(update, 1000);
 };
 
 const constructHourBlocks = function () {
   for (let i = 0; i < workingHours.length; i++) {
     const data = workingHours[i];
-    const userInput = $("<textarea/>").attr("id", "user-event");
+    const userInput = $("<textarea/>", {
+      text: "Testing",
+    });
     const timeLabel = $("<label>", {
       name: "time-label",
       id: "time-label",
       class: "time-of-day",
     });
-    timeLabel.data("time");
     timeLabel.text(data.hour);
 
     const saveBtn = $("<button/>", {
       text: "Save Event",
-      id: "save-btn",
+      id: data.localStorageKey,
       class: "saveBtn",
     });
     const eventContainer = $("<div>", {
-      class: "event-container",
+      class: `event-container ${getTimeBlockClassName(
+        parseInt(data.localStorageKey)
+      )}`,
     });
+    eventContainer.attr("data-time", data.localStorageKey);
     eventContainer.append(timeLabel, userInput, saveBtn);
     const container = $("#container");
     container.append(eventContainer);
@@ -102,20 +115,32 @@ const constructHourBlocks = function () {
 
   const saveData = function () {
     // target the text area field
+    // how about the data attribute
     const event = document.getElementById("user-event");
-    const hour = sx;
+    // const hour = ;
     // const savingData = activitiesByHour.push(input);
     localStorage.setItem("activitiesByHour", JSON.stringify());
   };
 
   const btn = document.getElementsByClassName("saveBtn");
+  console.log(btn);
   btn.addEventListener("click", saveData);
-  console.log("click", onClick);
+  console.log("click", btn);
+};
+const currentHour = 13;
+
+const getTimeBlockClassName = function (hour) {
+  if (hour > currentHour) {
+    return "future";
+  } else if (hour === currentHour) {
+    return "present";
+  } else {
+    return "past";
+  }
 };
 
-const isPresent = function () {
-  // if present - set color to --mango
-  //  if false - set color to --orange-pantone
+const getTextForKey = function (text) {
+  //
 };
 
 onLoad();
