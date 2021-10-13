@@ -111,9 +111,7 @@ const constructHourBlocks = function () {
   $("#container").click(saveData);
 };
 
-// const currentHour = moment().hour();
-const currentHour = 12;
-console.log(currentHour);
+const currentHour = moment().hour();
 
 const getTimeBlockClassName = function (hour) {
   if (hour > currentHour) {
@@ -129,18 +127,23 @@ const renderEventDiary = function () {
   const dataFromLocalStorage = JSON.parse(
     localStorage.getItem("activitiesByHour")
   );
-  console.log("Local Storage", dataFromLocalStorage);
 
   const renderText = function (index) {
     const hour = $(this).next().attr("id");
-    console.log(hour);
     if (dataFromLocalStorage.hasOwnProperty(hour)) {
-      console.log("testing if function");
       $(this).text(dataFromLocalStorage[hour]);
     }
   };
 
   $("textarea").each(renderText);
 };
+
+const clearLS = function (event) {
+  console.log(event.target);
+  localStorage.clear();
+  window.location.reload();
+};
+
+$("#clear-ls").click(clearLS);
 
 onLoad();
