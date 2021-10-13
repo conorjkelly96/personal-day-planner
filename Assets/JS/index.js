@@ -2,55 +2,38 @@ const workingHours = [
   {
     hour: "09:00",
     localStorageKey: "9",
-    event: $("#user-input"),
   },
   {
     hour: "10:00",
     localStorageKey: "10",
-
-    event: $("#user-input"),
   },
   {
     hour: "11:00",
     localStorageKey: "11",
-
-    event: $("#user-input"),
   },
   {
     hour: "12:00",
     localStorageKey: "12",
-
-    event: $("#user-input"),
   },
   {
     hour: "13:00",
     localStorageKey: "13",
-
-    event: $("#user-input"),
   },
   {
     hour: "14:00",
     localStorageKey: "14",
-
-    event: $("#user-input"),
   },
   {
     hour: "15:00",
     localStorageKey: "15",
-
-    event: $("#user-input"),
   },
   {
     hour: "16:00",
     localStorageKey: "16",
-
-    event: $("#user-input"),
   },
   {
     hour: "17:00",
     localStorageKey: "17",
-
-    event: $("#user-input"),
   },
 ];
 
@@ -65,9 +48,6 @@ const onLoad = function () {
 
   //Render Hour Block
   constructHourBlocks();
-
-  //set Present / Future color coordination
-  // isPresent();
 };
 
 const initializeLocalStorage = function () {
@@ -88,7 +68,7 @@ const constructHourBlocks = function () {
   for (let i = 0; i < workingHours.length; i++) {
     const data = workingHours[i];
     const userInput = $("<textarea/>", {
-      text: "Testing",
+      text: getTextForKey(parseInt(data.localStorageKey)),
     });
     const timeLabel = $("<label>", {
       name: "time-label",
@@ -113,21 +93,26 @@ const constructHourBlocks = function () {
     container.append(eventContainer);
   }
 
-  const saveData = function () {
-    // target the text area field
-    // how about the data attribute
-    const event = document.getElementById("user-event");
-    // const hour = ;
-    // const savingData = activitiesByHour.push(input);
-    localStorage.setItem("activitiesByHour", JSON.stringify());
+  const saveData = function (event) {
+    if ($(event.target).is("button")) {
+      const currentButton = $(event.target).attr("id");
+      const userInput = $(event.target).prev().val();
+      console.log(currentButton);
+      console.log(userInput);
+      localStorage.setItem("activitiesByHour", JSON.stringify("{}"));
+    }
   };
 
-  const btn = document.getElementsByClassName("saveBtn");
-  console.log(btn);
-  btn.addEventListener("click", saveData);
-  console.log("click", btn);
+  $("#container").click(saveData);
+  //add click event on the container
+  //condition if onClick element = button
+  // retrieve button id
+  // text content
 };
-const currentHour = 13;
+
+// const currentHour = moment().hour();
+const currentHour = 12;
+console.log(currentHour);
 
 const getTimeBlockClassName = function (hour) {
   if (hour > currentHour) {
@@ -139,8 +124,15 @@ const getTimeBlockClassName = function (hour) {
   }
 };
 
-const getTextForKey = function (text) {
-  //
+const getTextForKey = function (hour) {
+  const dataFromLS = localStorage.getItem("activitiesByHour");
+  const hourText = dataFromLS;
+  if (!dataFromLS) {
+    return;
+  } else {
+    const textArea = JSON.parse(localStorage.getItem("activitiesByHour"));
+    return "textArea";
+  }
 };
 
 onLoad();
