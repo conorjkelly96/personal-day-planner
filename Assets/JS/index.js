@@ -66,6 +66,7 @@ const renderClock = function () {
   setInterval(update, 1000);
 };
 
+// Construct Hour Blocks in workingHours Array
 const constructHourBlocks = function () {
   for (let i = 0; i < workingHours.length; i++) {
     const data = workingHours[i];
