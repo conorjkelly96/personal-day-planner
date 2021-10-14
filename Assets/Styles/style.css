@@ -3,10 +3,11 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 1;
+  background: var(--amethyst);
 }
 
 .jumbotron {
-  background-color: var(--mango);
+  background-color: var(--capri);
 }
 
 #clear-ls {
@@ -19,11 +20,11 @@ body {
 
 :root {
   /* CSS HEX */
-  --mango: #ffbe0bff;
-  --orange-pantone: #fb5607ff;
-  --winter-sky: #ff006eff;
-  --blue-violet: #8338ecff;
-  --azure: #3a86ffff;
+  --amethyst: #9b5de5ff;
+  --magenta-crayola: #f15bb5ff;
+  --minion-yellow: #fee440ff;
+  --capri: #00bbf9ff;
+  --sea-green-crayola: #00f5d4ff;
 }
 
 .event-container {
@@ -45,12 +46,19 @@ body {
   background-color: lightgray;
 }
 
-#time-label {
+.time-of-day {
   flex-grow: 1;
+  color: #000000;
+  text-align: center;
+  align-items: center;
 }
 
-#user-event {
+textarea {
   flex-grow: 2;
+}
+
+.saveBtn {
+  flex-grow: 1;
 }
 
 textarea {
