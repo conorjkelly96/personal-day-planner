@@ -146,4 +146,4 @@ const clearLS = function (event) {
 
 $("#clear-ls").click(clearLS);
 
-onLoad();
+window.addEventListener("load", onLoad);
