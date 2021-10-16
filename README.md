@@ -6,7 +6,7 @@
 
 Below is a screenshot of the welcome page users see upon window load.
 
-![Original Website](assets/img/screenshot.png)
+![Original Website](./assets/img/screenshot.png)
 
 ## Technologies Used
 
@@ -20,13 +20,13 @@ Below is a screenshot of the welcome page users see upon window load.
 
 ## Link to GitHub Pages
 
-URL REQUIRED [Click here!](https://conorjkelly96.github.io/javascript-code-quiz/)
+[Click here!](https://conorjkelly96.github.io/personal-day-planner/)
 
 ## Solution Overview
 
 ### On Load Webpage Rendering
 
-To render the DOM elements dynamically, an array of objects including two `keys` were used: a `key` for rendering the `hour`, and a key to pair this with a vlue in `localStorage`. See an extract of the code below:
+To render the DOM elements dynamically, an array of objects including two `keys` were used: a `key` for rendering the `hour`, and a key to pair this with a value in `localStorage`. See an extract of the code below:
 
 ```javascript
 const workingHours = [
