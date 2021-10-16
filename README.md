@@ -49,6 +49,7 @@ const onLoad = function () {
   //Render Hour Block
   constructHourBlocks();
 
+  // render diary events
   renderEventDiary();
 };
 
@@ -57,7 +58,7 @@ window.addEventListener("load", onLoad);
 
 ### Rendering DOM Elements Dynamically
 
-The main user interaction was dependant upon the construciton of the DOM element. A for loop was used to render an hour block for each object in the `workingHours` array:
+The main user interaction was dependant upon the construction of the DOM element. A for loop was used to render an hour block for each object in the `workingHours` array:
 
 ```javascript
 // Construct Hour Blocks in workingHours Array
@@ -75,7 +76,7 @@ const constructHourBlocks = function () {
 
 ### Storing and Retrieving Data in `localStorage`:
 
-When first opening the applicaiton, or starting a new session, the `initializeLocalStorage()` function is called on window load to check if there is a value in local storage, and if not, to store an empty object. We will see how this object is used later on in the solution design:
+When first opening the application, or starting a new session, the `initializeLocalStorage()` function is called on window load to check if there is a value in local storage, and if not, to store an empty object. We will see how this object is used later on in the solution design:
 
 ```javascript
 const initializeLocalStorage = function () {
