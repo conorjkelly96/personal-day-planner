@@ -6,7 +6,7 @@
 
 Below is a screenshot of the welcome page users see upon window load.
 
-![Original Website](./assets/img/screenshot.png)
+![Original Website](assets/img/screenshot.png)
 
 ## Technologies Used
 
