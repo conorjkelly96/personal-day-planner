@@ -2,12 +2,6 @@
 
 ## About the project
 
-## Main Page
-
-Below is a screenshot of the welcome page users see upon window load.
-
-![Original Website](assets/img/screenshot.png)
-
 ## Technologies Used
 
 - HTML5
