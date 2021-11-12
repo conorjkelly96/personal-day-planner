@@ -1,4 +1,13 @@
 /* Index Style Sheet */
+:root {
+  /* CSS HEX */
+  --amethyst: #9b5de5ff;
+  --magenta-crayola: #f15bb5ff;
+  --minion-yellow: #fee440ff;
+  --capri: #00bbf9ff;
+  --sea-green-crayola: #00f5d4ff;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
@@ -18,15 +27,6 @@ body {
   margin: 10px;
 }
 
-:root {
-  /* CSS HEX */
-  --amethyst: #9b5de5ff;
-  --magenta-crayola: #f15bb5ff;
-  --minion-yellow: #fee440ff;
-  --capri: #00bbf9ff;
-  --sea-green-crayola: #00f5d4ff;
-}
-
 .event-container {
   border: 0.5px lightgrey;
   display: flex;
@@ -36,25 +36,11 @@ body {
   border-radius: 5px;
 }
 
-.past {
-  background-color: lightgray;
-}
-.future {
-  background-color: lightgray;
-}
-.present {
-  background-color: lightgray;
-}
-
 .time-of-day {
   flex-grow: 1;
   color: #000000;
   text-align: center;
   align-items: center;
-}
-
-textarea {
-  flex-grow: 2;
 }
 
 .saveBtn {
@@ -68,6 +54,7 @@ textarea {
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
+  flex-grow: 2;
 }
 
 .jumbotron {
@@ -123,8 +110,4 @@ textarea {
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
-}
-
-.clock {
-  /* clock */
 }

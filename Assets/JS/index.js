@@ -36,6 +36,7 @@ const workingHours = [
     localStorageKey: "17",
   },
 ];
+const currentHour = moment().hour();
 
 const activitiesByHour = [];
 
@@ -88,6 +89,7 @@ const constructHourBlocks = function () {
         parseInt(data.localStorageKey)
       )}`,
     });
+
     eventContainer.attr("data-time", data.localStorageKey);
     eventContainer.append(timeLabel, userInput, saveBtn);
     const container = $("#container");
@@ -111,8 +113,6 @@ const constructHourBlocks = function () {
 
   $("#container").click(saveData);
 };
-
-const currentHour = moment().hour();
 
 const getTimeBlockClassName = function (hour) {
   if (hour > currentHour) {
